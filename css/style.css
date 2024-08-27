@@ -1,20 +1,22 @@
-input {
-  font-family: "Geeist Mono", monospace;
-  font-size: 1.75rem;
-  padding: 1rem 2rem;
-  padding-right: 4rem;
-  letter-spacing: 0.2ch;
-  border-radius: 6px;
-  color: black;
-  border-color: black;
-  border-style: solid;
-  background: gray;
-  outline: none;
-  transition: border-color 0.2s, color 0.2s;
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-
-label {
+.img1 {
+  background-image: url("./original-1e1654b78f9e65b4676a93e05de29b1f.jpg");
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+}
+.img2 {
+  background-image: url("./Exclude.png");
+  mix-blend-mode: screen;
+  background-size: cover;
+  width: 300px;
+  height: 200px;
   position: absolute;
-  color: black;
-  font-weight: 800;
 }
