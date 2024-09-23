@@ -20,10 +20,26 @@ a {
   /* 부모요소보다 크면 안보이게  */
 }
 
-img {
+.img {
   position: absolute;
   top: 0;
   left: 0;
   /* 그림 4장이 한 위치에 겹쳐지게 하기 위해 position, top, left */
-  height: 100vh;
+}
+
+.hide {
+  animation: imgMotion 1s forwards;
+  overflow: hidden;
+  border: 3px solid #f00;
+}
+
+@keyframes imgMotion {
+  from {
+    width: 100%;
+    height: 100vh;
+  }
+  to {
+    width: 0%;
+    height: 100vh;
+  }
 }
