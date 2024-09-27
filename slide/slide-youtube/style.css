@@ -36,10 +36,8 @@ a {
 @keyframes imgMotion {
   from {
     width: 100%;
-    height: 100vh;
   }
   to {
-    width: 0%;
-    height: 100vh;
+    width: 0;
   }
 }
