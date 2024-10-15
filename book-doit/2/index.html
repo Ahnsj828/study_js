@@ -12,9 +12,10 @@
       // 순서 3: 사용자의 몸무게가 적정 체중보다 높은지 낮은지를 판단한다.
       // 순서 4: 판단 후 결과를 알림창으로 사용자에게 보여준다.
 
-      let userName = prompt("당신의 이름은?");
-      let userHeight = prompt("당신의 키는?");
-      let userWeight = prompt("당신의 몸무게는?");
+      // < 내 코드 - 오답 >
+      // let userName = prompt("당신의 이름은?");
+      // let userHeight = prompt("당신의 키는?");
+      // let userWeight = prompt("당신의 몸무게는?");
 
       // let sum = (userHeight - 100) * 0.9;
 
@@ -25,6 +26,13 @@
       //     : "적정 체중이 아닙니다";
 
       // document.write(userName + "님" + "당신은" + result);
+
+      // ---------------------------------------------------
+
+      // < 책 코드 - 정답 >
+      let userName = prompt("당신의 이름은?");
+      let userHeight = prompt("당신의 키는?");
+      let userWeight = prompt("당신의 몸무게는?");
 
       let normalWeight = (userHeight - 100) * 0.9;
       let result =
