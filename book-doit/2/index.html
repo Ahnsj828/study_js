@@ -30,16 +30,33 @@
       // ---------------------------------------------------
 
       // < 책 코드 - 정답 >
-      let userName = prompt("당신의 이름은?");
-      let userHeight = prompt("당신의 키는?");
-      let userWeight = prompt("당신의 몸무게는?");
+      // let userName = prompt("당신의 이름은?");
+      // let userHeight = prompt("당신의 키는?");
+      // let userWeight = prompt("당신의 몸무게는?");
+
+      // let normalWeight = (userHeight - 100) * 0.9;
+      // let result =
+      //   userWeight >= normalWeight - 5 && userWeight <= normalWeight + 5;
+      // result = result ? "적정 체중입니다." : "적정 체중이 아닙니다";
+
+      // document.write(userName + "님" + "당신은" + result);
+
+      // ---------------------------------------------------
+
+      // < 안보고 다시 쳐보기 >
+      let userName = prompt("당신의 이름은 무엇인가요?");
+      let userHeight = prompt("당신의 키는 몇인가요?");
+      let userWeight = prompt("당신의 몸무게는 몇인가요?");
 
       let normalWeight = (userHeight - 100) * 0.9;
+
       let result =
         userWeight >= normalWeight - 5 && userWeight <= normalWeight + 5;
-      result = result ? "적정 체중입니다." : "적정 체중이 아닙니다";
+      result = result
+        ? "정정 체중입니다. 걱정마세요😉"
+        : "적정 체중이 아니시네요. 관리하세요🤨";
 
-      document.write(userName + "님" + "당신은" + result);
+      document.write(result);
     </script>
   </body>
 </html>
