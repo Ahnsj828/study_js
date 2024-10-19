@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Plugin </title>
+<script src="js/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="css/swiper-bundle.min.css">
+<style>
+  *{margin: 0;padding: 0;}
+  #gallery_wrap{ 
+    position: relative; overflow: hidden;
+    margin: 0 auto; 
+    width: 640px; height: 480px;
+  }
+#gallery_wrap .swiper-scrollbar-drag { background: yellow; }
+</style>
+</head>
+<body>
+<div id="gallery_wrap" class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="images/pic_1.jpg" alt="사진1"></div>
+    <div class="swiper-slide"><img src="images/pic_2.jpg" alt="사진2"></div>
+    <div class="swiper-slide"><img src="images/pic_3.jpg" alt="사진3"></div>
+    <div class="swiper-slide"><img src="images/pic_4.jpg" alt="사진4"></div>
+    <div class="swiper-slide"><img src="images/pic_5.jpg" alt="사진5"></div>
+    <div class="swiper-slide"><img src="images/pic_6.jpg" alt="사진6"></div>
+    <div class="swiper-slide"><img src="images/pic_7.jpg" alt="사진7"></div>
+    <div class="swiper-slide"><img src="images/pic_8.jpg" alt="사진8"></div>
+  </div>
+  <div class="swiper-pagination"></div>
+
+  <!-- 이전, 다음 버튼이 필요한 경우에만 코드 삽입 -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- 스크롤바 형식에 위치 표시가 필요한 경우에만 코드 삽입 -->
+  <div class="swiper-scrollbar"></div>
+</div>
+<script>
+  const swiper = new Swiper('.swiper', {
+    // 방향과 반복 슬라이드 설정 
+    direction: 'horizontal',
+    loop: true,
+
+    // 인디게이터 필요한 경우에만 설정
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // 이전, 다음 버튼이 필요한 경우에만 설정
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // 스크롤바 형식에 위치 표시가 필요할 경우에만 설정
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+</script>
+</body>
+</html>

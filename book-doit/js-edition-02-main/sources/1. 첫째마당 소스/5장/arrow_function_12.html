@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 화살표 함수 </title>
+<script>
+  function sumFnc_1(num1, num2) {
+    return num1 + num2;
+  }
+  console.log(sumFnc_1(1, 2));  // 3
+  
+  const sumFnc_2 = (num1, num2) =>  num1 + num2;
+  console.log(sumFnc_2(10, 20));  // 30
+
+  const sumFnc_3 = (num1, num2) => {
+    const result =  `num1 + num2 = ${num1 + num2}`
+    return  result;
+  }
+  console.log(sumFnc_3(100, 200));  // num1 + num2 = 300
+
+  const infoFnc_1 = function (info1, info2) {
+      return { "name" : info1, "age" : info2 } // { name : '홍길동', age : 22 }
+  }
+  console.log(infoFnc_1('홍길동', 22));
+
+  const infoFnc_2 = (info1, info2) => ({ "name" : info1, "age" : info2 }); //{ name : '최군', age : 32 }
+  console.log(infoFnc_2('최군', 32));
+</script>
+</head>
+<body>
+</body>
+</html>

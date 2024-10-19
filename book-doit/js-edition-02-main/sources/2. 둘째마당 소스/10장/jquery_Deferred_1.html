@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Deferred </title>
+<script src="js/jquery.js"></script>
+<script>
+  function deferredTest(result) {
+    const deferred = $.Deferred();
+
+    setTimeout(() => {
+      if(result) {
+        deferred.resolve('성공'); //result가 true일 경우 수행됨
+      } else {
+        deferred.reject('실패'); //result가 false일 경우 수행됨
+      }
+    }, 1000);
+
+    return deferred.promise();
+  }
+
+  deferredTest(true)
+  .done((data) => {
+    console.log('done: ', data);
+  })
+  .fail((data) => {
+    console.log(data);
+  })
+  .then((data) => {
+      console.log('then1: ', data);
+      return $.ajax("https://jsonplaceholder.typicode.com/posts/1")
+  })
+  .then((data) => {
+      console.log('then2: ', data);
+  })
+  .always(() => {
+    console.log('항상 실행')
+  });
+</script>
+</head>
+<body>
+  <div class="wrap"></div>
+</body>
+</html>
