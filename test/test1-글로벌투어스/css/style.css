@@ -29,3 +29,40 @@ body {
   background: #fff;
   color: #333;
 }
+
+.inner {
+  width: 1200px;
+  margin: auto;
+}
+/* .inner{width: 1200px; margin:auto;} 너비 1200px에 가운데 정렬하겠다는 의미다 */
+
+header {
+  height: 100px;
+  background: #f45750;
+}
+/* 임의의 컬러를 주면서 영역을 확인해 주는게 좋다 */
+
+.slide {
+  height: 300px;
+  background: #40b0f9;
+}
+
+.contents {
+  height: 200px;
+  background: #ff884d;
+  display: flex;
+}
+/* display: flex; => 자식요소 article들을 가로로 나열하고 높이를 부모요소 높이만큼 꽉 채우기 위해 */
+.contents article {
+  width: 400px;
+}
+/* width: 400px; => 와이어프레임을 보면 너비가 따로 있지 않다 -> 임의로 값을 설정해 줘도 된다. */
+.contents .gall {
+  background: #00d2a5;
+}
+/* 임의로 색줘보기 */
+
+footer {
+  height: 100px;
+  background: #666;
+}
