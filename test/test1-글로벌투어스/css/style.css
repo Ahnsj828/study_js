@@ -41,8 +41,8 @@ header {
   padding: 35px 0px 10px 0px;
   position: relative;
 }
-/* background: #fff; => 색상은 마음대로 주면 된다 */
-/* position: relative; => nav가 position: absolute; 할 때 부모나 조상 기준으로 잡아줘야 해서 */
+/* background: #fff; -> 색상은 마음대로 주면 된다 */
+/* position: relative; -> nav가 position: absolute; 할 때 부모나 조상 기준으로 잡아줘야 해서 */
 nav {
   position: absolute;
   top: 0;
