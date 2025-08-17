@@ -35,25 +35,73 @@ body {
   margin: auto;
 }
 
+/* ---------------------------------------------------------------------- */
+
 header {
   height: 100px;
   background: #fff;
   padding: 35px 0px 10px 0px;
   position: relative;
 }
-/* background: #fff; -> 색상은 마음대로 주면 된다 */
-/* position: relative; -> nav가 position: absolute; 할 때 부모나 조상 기준으로 잡아줘야 해서 */
+
 nav {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 40px;
+  right: 10px;
+  z-index: 10;
 }
-/* nav를 오른쪽에 둬야하는데 선생은 position: abolute;로 공중에 띄워줬다. */
+
+nav > ul {
+  display: flex;
+}
+/* nav > ul => 직계 자식을 선택할 때는 >를 사용한다. */
+/* nav ul => 그냥 자식을 선택할 때는 공백을 사용한다.(nav안에 있는 모든 ul) */
+
+nav > ul > li > a {
+  display: block;
+  width: 120px;
+  text-align: center; /* 가운데 정렬 */
+  font-weight: bold;
+  padding: 10px;
+  background: #ca5311;
+  color: #fff;
+}
+/* a는 인라인 요소라 display: inline-block;로 바꿔줘야 너비width, 높이height를 줄 수 있다. */
+/* 색상은 마음대로 해도된다. */
+
+nav > ul > li:hover > a {
+  background: #3c6dde;
+}
+/* li에 마우스오버했을 때 a의 배경색을 바꿔준다. */
+/* :hover를 li가 아닌 a에 사용하면 a에 마우스오버했을 때만 배경색이 바뀐다. -> sub메뉴에 마우스를 오버하면 색상이 안바뀐다 -> sub메뉴에 마우스 올렸을 때도 색상이 바뀌어야하니까 li에 :hover를 줘야한다!!! 중요!! */
+/* a에 :hover를 주면 a에 마우스오버했을 때만 배경색이 바뀐다. -> sub메뉴에 마우스를 오버하면 색상이 안바뀐다 -> sub메뉴에 마우스 올렸을 때도 색상이 바뀌어야하니까 li에 :hover를 줘야한다!!! 중요!! */
+
+.sub {
+  display: none;
+}
+/* display: none; => sub메뉴는 기본적으로 숨겨져있어야 해서 => 나중에 스크립트 작업할때 보이게 할 거다. */
+
+.sub li a {
+  display: block;
+  background: #fff;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+/* 여기에는 >를 안쓰는 이유 -> 직계자손 하나밖에 없으니까 */
+.sub li a:hover {
+  background: #5c8dfe;
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------------- */
 
 .slide {
   height: 300px;
   background: #40b0f9;
 }
+
+/* ---------------------------------------------------------------------- */
 
 .contents {
   height: 200px;
@@ -66,6 +114,8 @@ nav {
 .contents .gall {
   background: #00d2a5;
 }
+
+/* ---------------------------------------------------------------------- */
 
 footer {
   height: 100px;
