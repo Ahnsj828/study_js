@@ -3,14 +3,27 @@ $(function () {
   $("nav>ul>li").mouseenter(function () {
     // 마우스 오버시
     $(this).children(".sub").stop().slideDown();
-    // this(예약어)인 li의 자식인 .sub를 슬라이드 다운
+    // 마우스를 올린 해당 this(예약어)인 li의 자식 .sub를 슬라이드 다운(열림)
   });
   $("nav>ul>li").mouseleave(function () {
     // 마우스 아웃시
     $(".sub").stop().slideUp();
-    // this(예약어)인 li를 슬라이드 업
   });
 });
+
+// $(function () {
+//   // 메뉴
+//   $("nav>ul>li").mouseenter(function () {
+//     // 마우스 오버시
+//     $(this).children(".sub").stop().slideDown();
+//     // this(예약어)인 li의 자식인 .sub를 슬라이드 다운
+//   });
+//   $("nav>ul>li").mouseleave(function () {
+//     // 마우스 아웃시
+//     $(".sub").stop().slideUp();
+//     // this(예약어)인 li를 슬라이드 업
+//   });
+// });
 
 // mouseenter 대신 mouseover를 사용해도 되지만 / 쌤은 mouseenter와 mouseleave 를 선호
 
