@@ -10,6 +10,11 @@ $(function () {
     $(".sub").stop().slideUp();
     // 페이지 내 모든 .sub를 슬라이드 업(닫음)
   });
+
+  // 슬라이드
+  // 슬라이드 요소 li 세개가 있다. li들을 움직이는게 아니라 부모인 ul 슬라이드 띠를 움직여야 한다.
+  $(".slide ul").animate({ marginLeft: -1200 });
+  // ul의 왼쪽 마진을 -1200px로 설정하여 첫번째 li가 보이지 않도록 한다.
 });
 
 // mouseenter 대신 mouseover를 사용해도 되지만 / 쌤은 mouseenter와 mouseleave 를 선호
