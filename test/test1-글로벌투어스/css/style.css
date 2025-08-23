@@ -139,14 +139,62 @@ nav > ul > li:hover > a {
 
 .contents {
   height: 200px;
-  background: #ff884d;
   display: flex;
 }
+
 .contents article {
   width: 400px;
 }
+
+/* ------< notice >------  */
+.contents .notice {
+  padding: 10px;
+}
+
+.notice h2 {
+  background: #ca5311;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  width: 120px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 20px;
+}
+
+.notice ul {
+  background: #ca5311;
+  padding: 5px 15px;
+}
+
+.notice ul li {
+  border-bottom: 1px dashed #fff;
+}
+
+.notice ul li:last-child {
+  border-bottom: none;
+}
+
+.notice ul li a {
+  position: relative;
+  display: block;
+  padding: 5px 0;
+  color: #fff;
+}
+
+.notice ul li p {
+  width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notice ul li span {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
 .contents .gall {
-  background: #00d2a5;
 }
 
 /* ---------------------------------------------------------------------- */
