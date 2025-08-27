@@ -30,6 +30,10 @@ body {
   color: #333;
 }
 
+.wrap {
+  position: relative;
+}
+
 .inner {
   width: 1200px;
   margin: auto;
@@ -273,4 +277,44 @@ nav > ul > li:hover > a {
 footer {
   height: 100px;
   background: #666;
+}
+
+/* ---------------------------------------------------------------------- */
+
+.popup {
+  position: absolute;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  text-align: center;
+  border-radius: 20px;
+  border: 2px solid #5c8dfe;
+  padding: 20px;
+  display: none;
+}
+
+.popup h2 {
+  color: #3c6dde;
+  margin-bottom: 20px;
+}
+
+.popup .text {
+  margin: 20px 0;
+}
+
+.popup .close {
+  text-align: right;
+}
+
+.popup .close button {
+  background: #3c6dde;
+  border: 0;
+  padding: 10px;
+  color: #fff;
+}
+
+.popup .close button:hover {
+  background: #25448e;
 }
