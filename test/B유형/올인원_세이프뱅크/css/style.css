@@ -107,6 +107,11 @@ nav > ul > li:hover > a {
   background: #40b0f9;
 }
 
+.slide ul li {
+  width: 1200px;
+  height: 300px;
+}
+
 /* ------------------------------------ */
 
 .contents {
