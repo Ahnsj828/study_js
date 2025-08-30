@@ -45,7 +45,7 @@ header {
   position: relative;
   height: 100px;
   background: #fff;
-  padding-top: 35px 0px 10px 0px;
+  padding: 35px 0 10px 0;
 }
 
 nav {
@@ -277,6 +277,52 @@ nav > ul > li:hover > a {
 footer {
   height: 100px;
   background: #666;
+  color: #fff;
+  padding-left: 20px;
+  position: relative;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+/* display: flex; -> .fsns를 absolute 해서 나가게 됐다. 나머지 둘 로고와 카피라이트만 남게 되서 둘만 flex 적용됐다. .fsns는 적용이 안된다. */
+/* 로고와 카피라이트 사이 간격 주고싶으면 gap을 주면 되고 수직 가운데 정렬 하고 싶으면 aic 주면 된다. */
+
+.fsns {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.fsns li a {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 1px;
+}
+/* 동그라미 있으면 예쁘겠다 -> 클릭할 수 있는 영역에게 w,h 주는게 좋다 -> li는 보여지는 영역이고 a가 클릭할 수 있는 영역이다. -> a에 w,h 주기 */
+/* border-radius: 50%; -> 이렇게 하면 동그라미가 만들어진다 */
+/* text-align: center; -> 이미지들 가운데로 올 수 있게 */
+/* tac 줘서 가로 중앙에는 오지만 세로 중앙에는 안왔다 -> 이때 padding-top을 주면 된다. */
+
+.fsns li:nth-child(1) a {
+  background: #3f5b9a;
+}
+
+.fsns li:nth-child(2) a {
+  background: #47b749;
+}
+
+.fsns li:nth-child(3) a {
+  background: red;
+}
+
+.fsns img {
+  height: 30px;
 }
 
 /* ---------------------------------------------------------------------- */
