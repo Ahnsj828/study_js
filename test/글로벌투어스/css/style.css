@@ -278,7 +278,46 @@ header nav > ul > li:hover > a {
 footer {
   background: #707070;
   height: 100px;
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  gap: 30px;
 }
+
+.footer-copy {
+  color: #fff;
+  padding-right: 270px;
+}
+
+.footer-sns {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-sns li a {
+  display: block;
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.footer-sns li:nth-child(1) a {
+  background: rgb(56, 89, 186);
+}
+
+.footer-sns li:nth-child(2) a {
+  background: rgb(39, 159, 39);
+}
+
+.footer-sns li:nth-child(3) a {
+  background: rgb(225, 17, 17);
+}
+
+.footer-sns li a img {
+  height: 30px;
+}
+
+/* .footer-logo {
+} */
 
 /* -------------------------------------- */
 /* background: #3c6dde;
