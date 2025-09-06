@@ -40,8 +40,20 @@ body {
 }
 
 header {
+  position: relative;
   height: 100px;
-  background: orange;
+  padding: 35px 0 10px 0;
+}
+
+nav {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  z-index: 10;
+}
+
+header > nav > ul {
+  display: flex;
 }
 
 /* ---------------------------------- */
