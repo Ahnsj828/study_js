@@ -56,6 +56,16 @@ header > nav > ul {
   display: flex;
 }
 
+nav > ul > li > a {
+  display: block;
+  width: 120px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  background: #ca5311;
+  color: #fff;
+}
+
 /* ---------------------------------- */
 
 .slide {
