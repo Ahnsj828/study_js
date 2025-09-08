@@ -66,6 +66,10 @@ nav > ul > li > a {
   color: #fff;
 }
 
+nav > ul > li:hover > a {
+  background: #3c6dde;
+}
+
 /* ---------------------------------- */
 
 .slide {
