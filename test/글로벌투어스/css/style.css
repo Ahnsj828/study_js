@@ -45,7 +45,7 @@ header {
   padding: 35px 0 10px 0;
 }
 
-nav {
+header nav {
   position: absolute;
   top: 40px;
   right: 10px;
@@ -56,18 +56,35 @@ header > nav > ul {
   display: flex;
 }
 
-nav > ul > li > a {
+header > nav > ul > li > a {
   display: block;
-  width: 120px;
   text-align: center;
-  font-weight: bold;
+  width: 120px;
   padding: 10px;
   background: #ca5311;
   color: #fff;
+  font-weight: bold;
 }
 
 nav > ul > li:hover > a {
   background: #3c6dde;
+}
+
+.sub {
+  display: none;
+}
+
+.sub li a {
+  display: block;
+  text-align: center;
+  padding: 5px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.sub li a:hover {
+  background: #5c8dfe;
+  color: #fff;
 }
 
 /* ---------------------------------- */
