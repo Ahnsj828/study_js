@@ -29,3 +29,58 @@ body {
   background: #fff;
   color: #333;
 }
+
+/* ------------------------------------ */
+
+header {
+  height: 100px;
+  background: #f45750;
+}
+
+header .inner {
+  width: 1200px;
+  margin: auto;
+  background: #fc6;
+  height: 100%;
+}
+
+/* ------------------------------------ */
+
+.slide {
+  height: 300px;
+  width: 1200px;
+  margin: auto;
+  background: #40b0f9;
+}
+
+/* ------------------------------------ */
+
+.contents {
+  width: 1200px;
+  height: 200px;
+  margin: auto;
+  background: #ff884d;
+  display: flex;
+}
+
+.contents article {
+  width: 400px;
+}
+
+.contents .banner {
+  background: #2cc;
+}
+
+/* ------------------------------------ */
+
+footer {
+  height: 120px;
+  background: #666;
+}
+
+footer .inner {
+  width: 1200px;
+  margin: auto;
+  background: #fc6;
+  height: 100%;
+}

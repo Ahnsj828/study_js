@@ -8,5 +8,22 @@
     <script src="js/jquery-1.12.3.js"></script>
     <script src="js/script.js"></script>
   </head>
-  <body></body>
+  <body>
+    <!-- .wrap>(header>.inner)+section.slide+(.contents>article.con+article.banner+article.go)+(footer>.inner) -->
+    <!-- .wrap>(header>.inner{헤더영역})+section.slide{슬라이드영역}+(.contents>article.con{공지사항}+article.banner{배너}+article.go{바로가기})+(footer>.inner{푸터영역}) -->
+    <div class="wrap">
+      <header>
+        <div class="inner">헤더영역</div>
+      </header>
+      <section class="slide">슬라이드영역</section>
+      <div class="contents">
+        <article class="con">공지사항/갤러리</article>
+        <article class="banner">배너</article>
+        <article class="go">바로가기</article>
+      </div>
+      <footer>
+        <div class="inner">푸터영역</div>
+      </footer>
+    </div>
+  </body>
 </html>
