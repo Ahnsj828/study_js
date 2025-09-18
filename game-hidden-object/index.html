@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>숨은그림찾기 MVP</title>
+    <style>
+      :root {
+        --accent: #1a73e8;
+        --ok: #16a34a;
+        --danger: #ef4444;
+        --ink: #111827;
+        --muted: #6b7280;
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --ring: rgba(26, 115, 232, 0.9);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+          sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+      }
+      .game {
+        width: min(100%, 920px);
+        background: var(--card);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid #e5e7eb;
+        background: #fff;
+      }
+      .topbar .stats {
+        display: flex;
+        gap: 16px;
+        font-weight: 600;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #f1f5f9;
+        color: #0f172a;
+        font-size: 14px;
+      }
+      .badge .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .btn {
+        border: 1px solid #d1d5db;
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn:hover {
+        background: #f8fafc;
+      }
+      .stage {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #e5e7eb;
+        user-select: none;
+        touch-action: manipulation;
+      }
+      .stage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      /* 클릭 레이어 */
+      .hit-layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none; /* 개별 핫스팟만 포인터 허용 */
+      }
+      .hotspot {
+        position: absolute;
+        border: 2px dashed transparent;
+        border-radius: 8px;
+        pointer-events: auto; /* 클릭 받음 */
+      }
+      .hotspot.found {
+        border-color: var(--ok);
+        background: rgba(22, 163, 74, 0.18);
+      }
+      /* 정답 이펙트 (클릭 위치 원형 링) */
+      .pulse {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        border: 3px solid var(--ring);
+        border-radius: 999px;
+        transform: translate(-50%, -50%);
+        animation: pulse 700ms ease-out forwards;
+        pointer-events: none;
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0.8;
+          transform: translate(-50%, -50%) scale(0.6);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1.4);
+        }
+      }
+      /* 오답 이펙트 */
+      .shake {
+        animation: shake 300ms ease-in-out;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-6px);
+        }
+        50% {
+          transform: translateX(6px);
+        }
+        75% {
+          transform: translateX(-3px);
+        }
+      }
+      .bottom {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        padding: 12px 16px;
+        border-top: 1px solid #e5e7eb;
+        background: #fff;
+      }
+      .list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #f1f5f9;
+        color: #0f172a;
+        font-size: 14px;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        border: 1px dashed #cbd5e1;
+      }
+      .chip.found {
+        background: #ecfdf5;
+        color: #052e16;
+        border-color: #86efac;
+      }
+      .hint {
+        color: var(--muted);
+        font-size: 14px;
+        align-self: center;
+      }
+      /* 완료 모달 */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal.show {
+        display: flex;
+      }
+      .modal-card {
+        width: min(100%, 420px);
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        text-align: center;
+      }
+      .modal-card h2 {
+        margin: 8px 0 4px;
+      }
+      .modal-card p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="game" role="application" aria-label="숨은그림찾기 게임">
+      <header class="topbar">
+        <div class="stats">
+          <span class="badge"
+            ><span class="dot" aria-hidden="true"></span
+            ><span>남은 개수: <b id="leftCount">-</b></span></span
+          >
+          <span class="badge"
+            ><span
+              class="dot"
+              aria-hidden="true"
+              style="background: var(--ok)"
+            ></span
+            ><span>경과: <b id="timer">00:00</b></span></span
+          >
+        </div>
+        <button
+          id="btnReset"
+          class="btn"
+          type="button"
+          aria-label="게임 다시 시작"
+        >
+          다시 시작
+        </button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <!-- 배경 이미지: 경로를 프로젝트에 맞게 교체하세요 -->
+        <img id="bg" src="images/background.jpg" alt="숨은 그림 배경" />
+        <!-- 핫스팟 레이어 -->
+        <div class="hit-layer" id="layer"></div>
+      </section>
+
+      <footer class="bottom">
+        <div class="list" id="foundList" aria-label="찾을 항목 리스트"></div>
+        <div class="hint">배경을 눌러 숨은 오브젝트를 찾아보세요 👀</div>
+      </footer>
+    </main>
+
+    <!-- 완료 모달 -->
+    <div class="modal" id="modal">
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div aria-hidden="true" style="font-size: 42px; line-height: 1">🎉</div>
+        <h2 id="modalTitle">클리어!</h2>
+        <p id="modalDesc">기록 시간: 00:00</p>
+        <button class="btn" id="modalClose" type="button">확인</button>
+      </div>
+    </div>
+
+    <span class="sr-only" id="a11yStatus" aria-live="polite"></span>
+
+    <script>
+      // ----- 1) 데이터: 핫스팟(퍼센트 단위 좌표) -----
+      // 이미지 내 비율 기준 (x,y는 좌상단, w,h는 영역 크기) — 필요에 맞게 수정
+      const HOTSPOTS = [
+        { id: "ring", label: "반지", x: 14.0, y: 58.0, w: 6.0, h: 9.0 },
+        { id: "key", label: "열쇠", x: 42.5, y: 30.0, w: 5.0, h: 7.0 },
+        { id: "star", label: "별", x: 73.0, y: 22.0, w: 6.0, h: 10.0 },
+        { id: "feather", label: "깃털", x: 62.0, y: 70.0, w: 7.0, h: 9.0 },
+        { id: "cat", label: "고양이", x: 86.0, y: 48.0, w: 8.0, h: 12.0 },
+      ];
+
+      // ----- 2) 상태 -----
+      const state = {
+        found: new Set(),
+        startAt: 0,
+        timerId: null,
+      };
+
+      // ----- 3) 엘리먼트 캐시 -----
+      const stage = document.getElementById("stage");
+      const bg = document.getElementById("bg");
+      const layer = document.getElementById("layer");
+      const leftCount = document.getElementById("leftCount");
+      const timerEl = document.getElementById("timer");
+      const listEl = document.getElementById("foundList");
+      const btnReset = document.getElementById("btnReset");
+      const modal = document.getElementById("modal");
+      const modalClose = document.getElementById("modalClose");
+      const a11yStatus = document.getElementById("a11yStatus");
+
+      // ----- 4) 유틸 -----
+      function fmt(ms) {
+        const s = Math.floor(ms / 1000);
+        const mm = String(Math.floor(s / 60)).padStart(2, "0");
+        const ss = String(s % 60).padStart(2, "0");
+        return `${mm}:${ss}`;
+      }
+      function setA11y(msg) {
+        a11yStatus.textContent = msg;
+      }
+
+      // px → % / % → px 변환을 쉽게 하기 위해 stage 크기 기준 사용
+      function pctToRect({ x, y, w, h }) {
+        const rect = stage.getBoundingClientRect();
+        return {
+          left: rect.width * (x / 100),
+          top: rect.height * (y / 100),
+          width: rect.width * (w / 100),
+          height: rect.height * (h / 100),
+        };
+      }
+      function clientToPercent(clientX, clientY) {
+        const r = stage.getBoundingClientRect();
+        const x = ((clientX - r.left) / r.width) * 100;
+        const y = ((clientY - r.top) / r.height) * 100;
+        return { x, y };
+      }
+      function pointInBox(px, py, box) {
+        return (
+          px >= box.x &&
+          px <= box.x + box.w &&
+          py >= box.y &&
+          py <= box.y + box.h
+        );
+      }
+
+      // ----- 5) 렌더링 -----
+      function renderList() {
+        listEl.innerHTML = "";
+        HOTSPOTS.forEach((h) => {
+          const chip = document.createElement("div");
+          chip.className = "chip" + (state.found.has(h.id) ? " found" : "");
+          chip.innerHTML = state.found.has(h.id)
+            ? `✅ ${h.label}`
+            : `🔎 ${h.label}`;
+          listEl.appendChild(chip);
+        });
+        leftCount.textContent = HOTSPOTS.length - state.found.size;
+      }
+
+      function renderHotspots() {
+        layer.innerHTML = "";
+        HOTSPOTS.forEach((h) => {
+          const box = document.createElement("div");
+          box.className = "hotspot" + (state.found.has(h.id) ? " found" : "");
+          // % → px로 위치/크기 환산
+          const r = pctToRect(h);
+          box.style.left = r.left + "px";
+          box.style.top = r.top + "px";
+          box.style.width = r.width + "px";
+          box.style.height = r.height + "px";
+          box.dataset.id = h.id;
+          box.title = state.found.has(h.id) ? `${h.label} (찾음)` : ""; // 디버그용/접근성용
+          box.addEventListener("click", (e) => {
+            e.stopPropagation();
+            onFound(h, e.clientX, e.clientY);
+          });
+          layer.appendChild(box);
+        });
+      }
+
+      function pulseAt(x, y) {
+        const ring = document.createElement("div");
+        ring.className = "pulse";
+        ring.style.left = x + "px";
+        ring.style.top = y + "px";
+        layer.appendChild(ring);
+        setTimeout(() => ring.remove(), 800);
+      }
+
+      // ----- 6) 로직 -----
+      function onFound(h, clientX, clientY) {
+        if (state.found.has(h.id)) return;
+        state.found.add(h.id);
+        renderList();
+        renderHotspots();
+        pulseAt(
+          clientX - stage.getBoundingClientRect().left,
+          clientY - stage.getBoundingClientRect().top
+        );
+        setA11y(`${h.label}을(를) 찾았습니다`);
+        if (state.found.size === HOTSPOTS.length) {
+          onClear();
+        }
+      }
+
+      function onMiss() {
+        // 오답 시 스테이지 흔들기
+        stage.classList.add("shake");
+        setTimeout(() => stage.classList.remove("shake"), 320);
+        setA11y("여긴 아니에요. 다른 곳을 찾아보세요.");
+      }
+
+      function onClear() {
+        stopTimer();
+        document.getElementById(
+          "modalDesc"
+        ).textContent = `기록 시간: ${timerEl.textContent}`;
+        modal.classList.add("show");
+      }
+
+      function startTimer() {
+        state.startAt = Date.now();
+        timerEl.textContent = "00:00";
+        state.timerId = setInterval(() => {
+          timerEl.textContent = fmt(Date.now() - state.startAt);
+        }, 200);
+      }
+      function stopTimer() {
+        if (state.timerId) clearInterval(state.timerId);
+        state.timerId = null;
+      }
+
+      function resetGame() {
+        modal.classList.remove("show");
+        state.found.clear();
+        renderList();
+        renderHotspots();
+        stopTimer();
+        startTimer();
+      }
+
+      // 스테이지 아무데나 클릭했을 때: 좌표 → % → 박스 포함 여부 확인
+      stage.addEventListener("click", (e) => {
+        // 이미지 영역 바깥 클릭 무시
+        const rect = stage.getBoundingClientRect();
+        if (
+          e.clientX < rect.left ||
+          e.clientX > rect.right ||
+          e.clientY < rect.top ||
+          e.clientY > rect.bottom
+        )
+          return;
+
+        const p = clientToPercent(e.clientX, e.clientY);
+        // 아직 못 찾은 항목 중 클릭 포함되는지 검사
+        const target = HOTSPOTS.find(
+          (h) => !state.found.has(h.id) && pointInBox(p.x, p.y, h)
+        );
+        if (target) {
+          onFound(target, e.clientX, e.clientY);
+        } else {
+          onMiss();
+        }
+      });
+
+      btnReset.addEventListener("click", resetGame);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("show");
+      });
+      modalClose.addEventListener("click", () =>
+        modal.classList.remove("show")
+      );
+      window.addEventListener("resize", renderHotspots);
+
+      // 이미지 로드 완료 후 렌더/시작
+      bg.addEventListener("load", () => {
+        renderList();
+        renderHotspots();
+        resetGame();
+      });
+      bg.addEventListener("error", () => {
+        alert(
+          "배경 이미지를 불러오지 못했습니다. images/background.jpg 경로를 확인하세요."
+        );
+      });
+    </script>
+  </body>
+</html>

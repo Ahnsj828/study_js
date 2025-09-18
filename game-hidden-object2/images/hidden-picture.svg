@@ -1,0 +1,55 @@
+<!-- sample-hidden-picture.svg -->
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#111" stroke-width="1.5">
+  <!-- 수평선/파도 -->
+  <path d="M0 420 Q80 400 160 420 T320 420 T480 420 T640 420 T800 420 T960 420 T1200 420" />
+  <!-- 섬/야자수 실루엣 -->
+  <path d="M230 420 q50 -70 120 -40 q-30 40 -20 80 z" />
+  <path d="M330 400 q20 -50 40 -60 m0 0 q-10 60 -15 110" />
+  <!-- 배(돛배) -->
+  <path d="M640 520 l-200 0 q40 40 120 40 q80 0 120 -40 z" />
+  <path d="M560 520 l0 -160 l110 0 l-90 140" />
+  <path d="M560 360 l90 0 l-90 120 z" />
+  <!-- 바다 생물/조개/산호(디테일 생략표기) -->
+  <circle cx="200" cy="650" r="16" />
+  <path d="M260 640 q20 -10 30 10 q0 20 -30 10 q-30 -10 -0 -20 z" />
+  <!-- 찾기 대상 (아이콘 형태로 자연스럽게 섞임) -->
+  <!-- 1) 닻 -->
+  <g id="target-anchor" transform="translate(310 610)">
+    <path d="M0 -20 v40 m-18 0 q18 28 36 0 m-9 0 v-18 h-14 m23 0 h14"/>
+    <circle cx="0" cy="-28" r="6"/>
+  </g>
+  <!-- 2) 나침반 -->
+  <g id="target-compass" transform="translate(1060 300)">
+    <circle cx="0" cy="0" r="22"/><path d="M0 -12 l6 12 l-6 12 l-6 -12 z"/>
+    <path d="M-22 0 h44 M0 -22 v44"/>
+  </g>
+  <!-- 3) 조개 -->
+  <g id="target-shell" transform="translate(160 700)">
+    <path d="M-20 0 q20 -30 40 0 q-10 12 -20 14 q-10 -2 -20 -14 z"/>
+  </g>
+  <!-- 4) 망원경 -->
+  <g id="target-scope" transform="translate(720 560) rotate(-10)">
+    <rect x="-40" y="-6" width="70" height="12" rx="6"/><circle cx="36" cy="0" r="8"/>
+  </g>
+  <!-- 5) 별 -->
+  <g id="target-star" transform="translate(980 160)">
+    <path d="M0-14 L4-2 L16-2 L6 4 L10 16 L0 8 L-10 16 L-6 4 L-16-2 L-4-2 Z"/>
+  </g>
+  <!-- 6) 물고기뼈 -->
+  <g id="target-fishbone" transform="translate(520 660)">
+    <path d="M-30 0 h60 M-10 -10 l0 20 M0 -12 l0 24 M10 -10 l0 20 M30 0 l10 -10 l0 20 z"/>
+  </g>
+  <!-- 7) 열쇠 -->
+  <g id="target-key" transform="translate(880 460)">
+    <circle cx="0" cy="0" r="10"/><path d="M10 0 h28 v6 h-8 v8 h-6 v-8 h-14"/>
+  </g>
+  <!-- 8) 조타륜 -->
+  <g id="target-helm" transform="translate(600 420)">
+    <circle cx="0" cy="0" r="16"/><circle cx="0" cy="0" r="8"/>
+    <path d="M0 -24 v10 M0 24 v-10 M24 0 h-10 M-24 0 h10 M17 -17 l-7 7 M-17 17 l7 -7 M-17 -17 l7 7 M17 17 l-7 -7"/>
+  </g>
+  <!-- 해칭/점선(지면 질감) -->
+  <g opacity="0.4">
+    <path stroke-dasharray="2 6" d="M80 740 h280 M420 740 h280 M760 740 h280"/>
+  </g>
+</svg>
