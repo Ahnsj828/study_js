@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Plugin </title>
+<script src="js/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="css/swiper-bundle.min.css">
+<style>
+  *{margin: 0; padding: 0; box-sizing: border-box;}
+  *:after, *:before {box-sizing: border-box;}
+  img {vertical-align: top;}
+  .gallery_wrap{ position: relative; overflow: hidden; margin: 0 auto; 
+    width: 640px;}
+  .gallery_thumb img { height: 119px; }
+  .gallery_thumb .swiper-slide-thumb-active  { position: relative; }
+  .gallery_thumb .swiper-slide-thumb-active:after {
+    content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+    border: 5px solid blue;
+  }
+</style>
+</head>
+<body>
+<div class="gallery_wrap">
+  <div class="swiper gallery_main">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/pic_1.jpg" alt="사진1"></div>
+      <div class="swiper-slide"><img src="images/pic_2.jpg" alt="사진2"></div>
+      <div class="swiper-slide"><img src="images/pic_3.jpg" alt="사진3"></div>
+      <div class="swiper-slide"><img src="images/pic_4.jpg" alt="사진4"></div>
+      <div class="swiper-slide"><img src="images/pic_5.jpg" alt="사진5"></div>
+      <div class="swiper-slide"><img src="images/pic_6.jpg" alt="사진6"></div>
+      <div class="swiper-slide"><img src="images/pic_7.jpg" alt="사진7"></div>
+      <div class="swiper-slide"><img src="images/pic_8.jpg" alt="사진8"></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <div class="swiper gallery_thumb">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/pic_1.jpg" alt="사진1"></div>
+      <div class="swiper-slide"><img src="images/pic_2.jpg" alt="사진2"></div>
+      <div class="swiper-slide"><img src="images/pic_3.jpg" alt="사진3"></div>
+      <div class="swiper-slide"><img src="images/pic_4.jpg" alt="사진4"></div>
+      <div class="swiper-slide"><img src="images/pic_5.jpg" alt="사진5"></div>
+      <div class="swiper-slide"><img src="images/pic_6.jpg" alt="사진6"></div>
+      <div class="swiper-slide"><img src="images/pic_7.jpg" alt="사진7"></div>
+      <div class="swiper-slide"><img src="images/pic_8.jpg" alt="사진8"></div>
+    </div>
+  </div>
+</div>
+ 
+<script>
+  
+</script>
+</body>
+</html>

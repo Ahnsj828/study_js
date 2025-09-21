@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> async awati</title>
+<script>
+  const 라면_장보기 = () => (new Promise((resolve, reject) => {
+      setTimeout(()=> {
+        console.log('A. 라면 장보기');
+        console.log('B. 라면 물 끓이기');  
+        resolve('라면 장보기 완료');
+      }, 1000); 
+  }));
+
+  const 커피_장보기 = () => (new Promise((resolve, reject) => {
+    setTimeout(()=> {
+      console.log('E. 커피 장보기');
+      console.log('F. 커피 물 끓이기');
+      reject('커피 품절');
+    }, 500); 
+  }));
+
+</script>
+</head>
+<body>  
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Do it 책 - p.55 - 적정 체중 구하는 테스트 만들기</title>
+  </head>
+  <body>
+    <script>
+      // 순서 1: 사용자에게 이름과 키와 몸무게 값을 받는다.
+      // 순서 2: 사용자에게 받은 키와 몸무게 값을 적정 체중 공식에 대입하여 적정 체중을 구한다.
+      // 순서 3: 사용자의 몸무게가 적정 체중보다 높은지 낮은지를 판단한다.
+      // 순서 4: 판단 후 결과를 알림창으로 사용자에게 보여준다.
+
+      // < 내 코드 - 오답 >
+      // let userName = prompt("당신의 이름은?");
+      // let userHeight = prompt("당신의 키는?");
+      // let userWeight = prompt("당신의 몸무게는?");
+
+      // let sum = (userHeight - 100) * 0.9;
+
+      // let normalWeight = userWeight >= sum - 5 && userWeight <= sum + 5;
+      // let result =
+      //   userWeight == normalWeight
+      //     ? "적정 체중입니다."
+      //     : "적정 체중이 아닙니다";
+
+      // document.write(userName + "님" + "당신은" + result);
+
+      // ---------------------------------------------------
+
+      // < 책 코드 - 정답 >
+      // let userName = prompt("당신의 이름은?");
+      // let userHeight = prompt("당신의 키는?");
+      // let userWeight = prompt("당신의 몸무게는?");
+
+      // let normalWeight = (userHeight - 100) * 0.9;
+      // let result =
+      //   userWeight >= normalWeight - 5 && userWeight <= normalWeight + 5;
+      // result = result ? "적정 체중입니다." : "적정 체중이 아닙니다";
+
+      // document.write(userName + "님" + "당신은" + result);
+
+      // ---------------------------------------------------
+
+      // < 안보고 다시 쳐보기 >
+      let userName = prompt("당신의 이름은 무엇인가요?");
+      let userHeight = prompt("당신의 키는 몇인가요?");
+      let userWeight = prompt("당신의 몸무게는 몇인가요?");
+
+      let normalWeight = (userHeight - 100) * 0.9;
+
+      let result =
+        userWeight >= normalWeight - 5 && userWeight <= normalWeight + 5;
+      result = result
+        ? "정정 체중입니다. 걱정마세요😉"
+        : "적정 체중이 아니시네요. 관리하세요🤨";
+
+      document.write(result);
+    </script>
+  </body>
+</html>

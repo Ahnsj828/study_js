@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  font-style: none;
+  color: inherit;
+}
+
+#imgSet {
+  position: relative;
+  /* 자식요소인 img들이 부모요소 기준으로 absolute되게 하기 위해 */
+  height: 100vh;
+  overflow: hidden;
+  /* 부모요소보다 크면 안보이게  */
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 그림 4장이 한 위치에 겹쳐지게 하기 위해 position, top, left */
+}
+
+.hide {
+  animation: imgMotion 1s forwards;
+  overflow: hidden;
+  border: 3px solid #f00;
+}
+
+@keyframes imgMotion {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 15px 20px;
+  margin: 20px 30px;
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}

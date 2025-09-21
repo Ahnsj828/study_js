@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 블록 레벨 스코프 </title>
+<script>
+  let num = 10;
+  let user = "홍길동";
+
+  if(num > 5) {
+    let num = 50; 
+    num = num + 10;   
+  }
+  document.write(`${num} <br>`);
+  if(user != "") {
+    user = "김길동"
+  }
+  
+ document.write(`${user} <br>`);
+</script>
+</head>
+<body>
+</body>
+</html>

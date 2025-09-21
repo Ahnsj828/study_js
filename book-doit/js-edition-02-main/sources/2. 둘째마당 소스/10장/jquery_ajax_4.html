@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Ajax </title>
+<script src="js/jquery.js"></script>
+<script>
+$(function() {
+	const proxyServerUrl = 'http://localhost:3000/proxy';
+	const xmlFileUrl = 'http://myhome.chosun.com/rss/www_section_rss.xml';
+
+	$.ajax({
+		url: proxyServerUrl,
+		method: 'GET',
+		data: { url: xmlFileUrl },
+		dataType:"xml",
+		success:function(data) {
+			console.log(data);
+		}
+	});
+});
+</script>
+</head>
+<body>
+  <div class="wrap"></div>
+</body>
+</html>

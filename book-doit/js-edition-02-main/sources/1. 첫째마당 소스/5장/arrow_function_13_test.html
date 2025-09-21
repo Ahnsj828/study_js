@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 화살표 함수(2) </title>
+</head>
+<body>
+  <p><button class="btn-1">BUTTON-01</button></p>
+  <p><button class="btn-2">BUTTON-02</button></p>
+
+  <script>
+    const obj_1 = {
+      name: "홍길동",
+      infoFnc: function() {
+          console.log(this);  //Object(obj_1)
+ 
+      }
+    }
+    obj_1.infoFnc();
+
+    const obj_2 = {
+      name: "홍대리",
+      infoFnc: () => {
+          console.log(this);   //window
+
+      }
+    }
+    obj_2.infoFnc();
+
+    const btn1 = document.querySelector(".btn-1");
+    const btn2 = document.querySelector(".btn-2");
+
+
+  </script>
+</body>
+</html>

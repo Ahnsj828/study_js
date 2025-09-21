@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> 다양한 변수 선언 </title>
+<script>
+  var num_1 = 100;
+  var num_1 = 200; //중복 재선언 (O)
+  document.write(num_1,"<br>"); //200
+
+  let num_2 = 10;
+  num_2 = 20; //중복 재선언 (X), 재할당 (O)
+  document.write(num_2,"<br>");  //20
+
+  const num_3 = 50; //중복 재선언 (X), 재할당 (X)
+  document.write(num_3,"<br>");  //50
+</script>
+</head>
+<body>
+</body>
+</html>

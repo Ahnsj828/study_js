@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> for of </title>
+<script>
+  const subjects = ["쓰기", "듣기", "말하기"];
+  const arr1 = [];
+  for(let item of subjects) {
+     arr1.push(prompt(`${item}의 점수는?`, "0"));
+  }
+
+  let result = arr1.every((item) => ( item >= 60));
+  
+  result = result ? "합격" : "불합격";
+  document.write(result);  
+</script>
+</head>
+<body>
+</body>
+</html>

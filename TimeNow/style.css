@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "DS-Digital";
+  src: url("./DS-DIGI.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "Digital-7";
+  src: url("fonts/digital-7.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "LCDPhone";
+  src: url("fonts/LCDPHONE.ttf") format("truetype");
+}
+
+body {
+  background-color: #000;
+  color: #03e9f4;
+  color: #d4fdff;
+
+  font-family: "DS-Digital", sans-serif;
+  font-family: "Digital-7", sans-serif;
+  font-family: "LCDPhone", sans-serif;
+
+  font-family: "Orbitron", sans-serif;
+  font-family: "Audiowide", sans-serif;
+  font-family: "Courier New", monospace;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden; /* 화면에 넘치는 부분 숨기기 */
+}
+
+.clock {
+  position: relative; /* ::before 가상 요소를 위한 기준점 */
+  text-align: center;
+}
+
+/* 빛나는 원 효과 */
+.clock::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; /* 원의 크기 */
+  height: 300px; /* 원의 크기 */
+  background: radial-gradient(
+    circle,
+    rgba(3, 232, 244, 0.182) 0%,
+    /* 중앙은 진한 색상 */ rgba(3, 232, 244, 0.107) 50%,
+    /* 중간은 살짝 연하게 */ rgba(3, 233, 244, 0) 100%
+      /* 바깥쪽은 완전히 투명 */
+  );
+  border-radius: 50%; /* 완전한 원으로 만들기 */
+  z-index: -1; /* 시계 텍스트 뒤로 보내기 */
+  filter: blur(30px); /* 더 부드럽게 퍼지도록 흐림 효과 */
+}
+
+#date,
+#time {
+  text-shadow: 0 0 3px #03e9f4, 0 0 5px #03e9f4, 0 0 30px #03e9f4,
+    0 0 100px #03e9f4;
+}
+
+#date {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#time {
+  font-size: 60px;
+  letter-spacing: 5px;
+}

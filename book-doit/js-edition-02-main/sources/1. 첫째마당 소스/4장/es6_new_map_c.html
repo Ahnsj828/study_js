@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> new Map </title>
+<script>
+  const contry = ["영어", "중국어"];
+  const subjects =  ["쓰기", "말하기"];
+  const myMap = new Map();
+
+  for (let i = 0; i < contry.length; i++) {
+    myMap.set(contry[i], []);
+    for(let k = 0; k < subjects.length; k++) {
+      myMap.get(contry[i])
+      .push(prompt(`${contry[i]}에 ${subjects[k]} 점수는?`));
+    }
+  }
+
+  console.log(myMap.get("영어"));
+  console.log(myMap.get("중국어"));
+</script>
+</head>
+<body>
+</body>
+</html>
