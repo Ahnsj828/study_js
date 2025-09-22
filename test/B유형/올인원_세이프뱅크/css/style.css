@@ -34,14 +34,68 @@ body {
 
 header {
   height: 100px;
-  background: #f45750;
+  background: #003366;
 }
 
 header .inner {
+  position: relative;
   width: 1200px;
-  margin: auto;
-  background: #fc6;
   height: 100%;
+  background: #003366;
+  margin: auto;
+  padding-top: 30px;
+}
+
+nav {
+  position: absolute;
+  top: 59px;
+  right: 0;
+  z-index: 10;
+}
+
+nav > ul {
+  display: flex;
+}
+
+nav > ul > li > a {
+  display: block;
+  width: 150px;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+}
+
+nav > ul > li:hover > a {
+  background: #f4d01f;
+  color: #003366;
+}
+
+.sub {
+  display: none;
+}
+
+.sub a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.sub a:hover {
+  background: #003366;
+  color: #fff;
+}
+
+.menuBg {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: 155px;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
 }
 
 /* ------------------------------------ */
