@@ -101,6 +101,7 @@ nav > ul > li:hover > a {
 /* ------------------------------------ */
 
 .slide {
+  position: relative;
   height: 300px;
   width: 1200px;
   margin: auto;
@@ -108,8 +109,38 @@ nav > ul > li:hover > a {
 }
 
 .slide ul li {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 1200px;
   height: 300px;
+}
+
+.slide ul li a {
+  display: block;
+  height: 100%;
+}
+
+.slide ul li.s1 {
+  background: url(../images/s1.jpg) no-repeat center/cover;
+}
+
+.slide ul li.s2 {
+  background: url(../images/s2.jpg) no-repeat center/cover;
+}
+
+.slide ul li.s3 {
+  background: url(../images/s3.jpg) no-repeat center/cover;
+}
+
+.slide ul li h2 {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  color: #003366;
+  text-shadow: 0 5px 10px #1ec3c0;
+  font-size: 35px;
 }
 
 /* ------------------------------------ */
