@@ -10,4 +10,6 @@ $(function () {
     $(".sub, .menuBg").stop().slideUp();
     // 페이지 내 모든 메뉴(.sub)와 배경(.menuBg)이 같이 슬라이드 업(닫음)
   });
+
+  // 슬라이드
 });
