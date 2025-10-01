@@ -12,14 +12,17 @@ $(function () {
   });
 
   // < 슬라이드 >
-  // 슬라이드 내 모든 li는 사라지게
-  $(".slide ul li").fadeOut();
-  // 두번째 슬라이드(1번슬라이드) 나오게
-  $(".slide ul li").eq(1).fadeIn();
-  // 2초 후 세번째 슬라이드(2번슬라이드) 나오게
-  $(".slide ul li").fadeOut();
-  $(".slide ul li").eq(2).fadeIn();
-  // 2초 후 첫번째 슬라이드(0번슬라이드) 나오게
-  $(".slide ul li").fadeOut();
-  $(".slide ul li").eq(0).fadeIn();
+  let i = 0;
+  function slide() {
+    if (i < 2) {
+      i++;
+    } else {
+      i = 0;
+    }
+
+    $(".slide ul li").fadeOut();
+    $(".slide ul li").eq(i).fadeIn();
+  }
+
+  setInterval(slide, 3000);
 });
