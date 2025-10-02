@@ -12,6 +12,7 @@ $(function () {
   });
 
   // < 슬라이드 >
+  // 변수 선언
   let i = 0;
   function slide() {
     if (i < 2) {
