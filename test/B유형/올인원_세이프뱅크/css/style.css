@@ -159,6 +159,51 @@ nav > ul > li:hover > a {
   width: 400px;
 }
 
+.con {
+  padding: 10px;
+  position: relative;
+}
+
+.tabmenu {
+  display: flex;
+}
+
+.tabmenu > li {
+  width: 150px;
+  background: #d3d3d3;
+}
+
+.tabmenu > li > h2 > a {
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.tabmenu > li.on {
+  background: #003366;
+  color: #fff;
+}
+
+.tabcon {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: #003366;
+  padding: 5px;
+  height: 140px;
+}
+
+/* ------------------------------------ */
+
+/* .gall {
+  display: none;
+}
+.gall ul {
+  
+} */
+
+/* ------------------------------------ */
+
 .contents .banner {
   background: #2cc;
 }
