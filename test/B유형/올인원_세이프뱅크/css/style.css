@@ -198,9 +198,9 @@ nav > ul > li:hover > a {
 .gall {
   display: none;
 }
-/* .gall ul {
-  
-} */
+.gall ul {
+  display: flex;
+}
 
 /* ------------------------------------ */
 
